@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<center>
+<br><br>
+<p>
+<h1> <FONT FACE="Helvetica" color="#3399FF"><u> Login </u></font> </h1>
+</p><br><br>
+</center>
+<p>
+<font face="Helvetica">
+<form action="test.jsp" Method="POST">
+<form method="POST" action="j_security_check">
+<table border="0" bgcolor=#eeeeee align=center cellspacing=10>
+<tr>
+<TR>
+<TD VALIGN=TOP ALIGN=RIGHT>
+<B>User Name:</B>
+</TD>
+<TD VALIGN=TOP>
+<B><INPUT NAME = "userName" 
+TYPE = "TEXT" 
+MAXLENGTH = "10" 
+SIZE = "10"></B>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=TOP ALIGN=RIGHT>
+<B>Password:</B>
+</TD>
+<TD VALIGN=TOP>
+<B><INPUT NAME = "password" 
+TYPE = "Password" 
+MAXLENGTH = "6" 
+SIZE = "6"></B>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=CENTER>
+<B><INPUT VALUE= " Log In " 
+TYPE= "SUBMIT"></B>
+</TD>
+</TR>
+</TABLE>
+</FORM>
+</BODY>
+</HTML>
+//TEST.jsp//
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%
+String connURL = "jdbc 	racle:thin:@orca.csc.ncsu.edu:1521 	RCL";
+Connection conn = null;
+Statement stmt = null;
+ResultSet rs = null;
+try{
+Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+conn = DriverManager.getConnection(connURL, "vapatel","pjdas");
+stmt = conn.createStatement();
+String user; 
+String password;
+String userName=request.getParameter("userName");
+String secretWord=request.getParameter("secretWord");
+rs =stmt.executeQuery ("SELECT * FROM Login WHERE USERNAME ='"+userName+"' AND PASSWORD='"+secretWord+"'"); 
+while(rs.next()){
+String dbUser = rs.getString("USERNAME");
+String dbPassword= rs.getString("PASSWORD");
+boolean entrance;
+entrance=false;
+
+if ((user.equals(dbUser)) && (password.equals(dbPassword))){
+entrance=true;
+}
+else{
+entrance=false;
+}
+if (entrance==true){%>
+<jsp:forward page="Useraccount.jsp"/> <%}
+else{%>
+<jsp:forward page="form.jsp"/> <%}
+}
+} catch (ClassNotFoundException e) {
+System.err.println("Couldn't find the mm " + "database driver: "+ e.getMessage());
+} catch (InstantiationException e) {
+System.err.println(e.getMessage());
+} catch (IllegalAccessException e) {
+System.err.println(e.getMessage());
+} catch (SQLException e) {
+System.err.println("SQL problem: " + e.getMessage());
+System.err.println("SQL state: " + e.getSQLState());
+System.err.println("Vendor error: " + e.getErrorCode());
+} finally {
+try {
+if (conn != null) {
+conn.close();
+}
+} catch (SQLException e) {
+System.err.println(e.getMessage());
+}
+}
+
+
+%>
+</body>
+David O'Meara
+Rancher

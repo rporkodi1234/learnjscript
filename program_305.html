@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+
+<style type="text/css">
+* {margin:0;padding:0;}
+fieldset {
+border:1px solid #ccc;
+width:50&#37;;
+padding:1em;
+}
+label {
+width:50%;
+display:block;
+text-align:right;
+}
+</style>
+
+</head>
+<body>
+<form method="post" action="codsys.asp">
+	<fieldset>
+    <legend>Personal Details:</legend>
+<label>First Name: <input type="text" name="firstname" align="right"/></label>
+<label>Last Name: <input type="text" name="lastname" align="center"/></label>
+<label>House Address: <input type="text" name="houseaddress" align="right" /></label>
+<label>Street: <input type="text" name="street" /></label>
+<label>City: <input type="text" name="city" /></label>
+<label>Pin Code: <input type="text" name="pincode" /></label>
+<label>Mobile Number: <input type="text" name="mobilenumber" /></label>
+</fieldset>
+<fieldset>
+    <legend>Sex:</legend>
+<label>Male <input type="radio" name="sex" value="male" /></label>
+<label>Female <input type="radio" name="sex" value="female" /></label>
+</fieldset>
+<fieldset>
+    <legend>Additional Information:</legend>
+<label>Bike <input type="checkbox" name="vehicle" value="Bike" /></label>
+<label>House Owned <input type="checkbox" name="house" value="alreadyowned" /> </label>
+<label>Car <input type="checkbox" name="vehicle" value="Car" /></label>
+</fieldset>
+<fieldset>
+    <legend>How can we help you :</legend>
+<label>What do you want: <input type="text" name="whatdoyouwant" value="whatdoyouwant"/></label>
+</fieldset>
+</textarea>
+<input name="email_subject" type="hidden" value="Subject of email" />
+<input name="redirect_to" type="hidden" value="redirect_to.htm" />
+<input type="reset" name="Reset" value="Reset" />
+<input name="send" type="submit" value="Submit" />
+</form>
+</body>
+</html>

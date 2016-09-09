@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ <head>
+ <body>
+ <script>
+function myFunction() {
+    alert("Hello! login successful");
+}
+</script>
+ <center>
+ 
+FirstName:<input id="name"name="name" placeholder="First and last name" required="" tabindex="1" type="text"style="border-radius:7px; border:2px solid #dadada;"/>
+
+</br>
+  
+Mobile Number: <input  id ="number "type=" number"value="" placeholder=" "  style="border-radius:7px; border:2px solid #dadada;"/>
+<form action="">
+  <input type="text" maxlength="10"  pattern="[0-9]{10}" title="Enter your mobile number"
+     required>
+</form>
+ </br>
+  
+E mail: <input id="email" type="email" value="" placeholder="name@email.com" style="border-radius:7px; border:2px solid #dadada;"/>
+<script>
+function validateForm() {
+    var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+}
+</script>
+
+  </br>
+   
+Password: <input id="pass" type="password" value="" placeholder="" style="border-radius:7px;border:2px solid #dadada;">
+ </br>
+ 
+ 
+country : <input type="text" list="countries" name="mycountry" value="" placeholder="country select" style="border-radius:7px; border:2px solid #dadada;">
+
+    <datalist id="countries">
+	<option value="India">India</option>
+	<option value="United States">United States</option>
+	<option value="United Kingdom">United Kingdom</option>
+	<option value="Germany">Germany</option>
+	<option value="France">France</option>
+</datalist>
+
+</br>
+				               
+ <button onclick="myFunction()">sign In </button>
+
+ </center>
+ </head>
+</body>
